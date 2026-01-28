@@ -27,22 +27,13 @@ export default function Team() {
                             key={member.name}
                             className="group relative rounded-2xl border border-white/[0.06] bg-[#12121a]/30 overflow-hidden transition-all duration-500 hover:border-[#c4a47c]/20"
                         >
-                            {/* Photo placeholder */}
-                            <div
-                                className="aspect-[4/5] bg-gradient-to-br from-[#1a1a24] to-[#12121a] relative overflow-hidden"
-                                style={{
-                                    backgroundImage: `linear-gradient(135deg, 
-                    hsl(${35 + index * 10}, 25%, 18%) 0%, 
-                    hsl(${25 + index * 10}, 20%, 12%) 100%)`,
-                                }}
-                            >
-                                {/* Initials as placeholder */}
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    <span className="font-[family-name:var(--font-playfair)] text-6xl font-medium text-white/10">
-                                        {member.name.split(' ').map(n => n[0]).join('')}
-                                    </span>
-                                </div>
-
+                            {/* Team Photo */}
+                            <div className="aspect-[4/5] bg-[#12121a] relative overflow-hidden">
+                                <img
+                                    src={`/team-${index + 1}.jpg`}
+                                    alt={member.name}
+                                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                />
                                 {/* Gradient overlay on hover */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0f] via-transparent to-transparent" />
                             </div>

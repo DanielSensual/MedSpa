@@ -29,14 +29,11 @@ export default function Gallery() {
                             key={item.id}
                             className="group relative aspect-[4/5] rounded-2xl overflow-hidden cursor-pointer"
                         >
-                            {/* Placeholder gradient background */}
-                            <div
-                                className="absolute inset-0 bg-gradient-to-br from-[#1a1a24] to-[#0a0a0f]"
-                                style={{
-                                    backgroundImage: `linear-gradient(135deg, 
-                    hsl(${30 + index * 15}, 30%, 15%) 0%, 
-                    hsl(${20 + index * 15}, 25%, 10%) 100%)`,
-                                }}
+                            {/* Gallery Image */}
+                            <img
+                                src={`/gallery-${index + 1}.jpg`}
+                                alt={item.treatment}
+                                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                             />
 
                             {/* Before/After indicator */}

@@ -27,7 +27,7 @@ export default function Hero() {
                     className="absolute inset-0 w-full h-full object-cover"
                     poster="/hero-poster.jpg"
                 >
-                    <source src="https://cdn.streamable.com/video/mp4/4syreq.mp4" type="video/mp4" />
+                    <source src="/hero-video.mp4" type="video/mp4" />
                 </video>
                 {/* Dark overlay for text readability */}
                 <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0f]/70 via-[#0a0a0f]/50 to-[#0a0a0f]/90" />

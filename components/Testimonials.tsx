@@ -60,14 +60,12 @@ export default function Testimonials() {
 
                             {/* Author */}
                             <div className="mt-6 flex items-center gap-3 border-t border-white/[0.06] pt-6">
-                                {/* Avatar placeholder */}
-                                <div
-                                    className="h-10 w-10 rounded-full bg-gradient-to-br from-[#c4a47c]/30 to-[#e8c4c4]/30 flex items-center justify-center"
-                                >
-                                    <span className="text-sm font-medium text-white/80">
-                                        {testimonial.name[0]}
-                                    </span>
-                                </div>
+                                {/* Avatar */}
+                                <img
+                                    src={`/testimonial-${index + 1}.jpg`}
+                                    alt={testimonial.name}
+                                    className="h-10 w-10 rounded-full object-cover"
+                                />
                                 <div>
                                     <p className="text-sm font-medium text-white">{testimonial.name}</p>
                                     <p className="text-xs text-zinc-500">Verified Client</p>
