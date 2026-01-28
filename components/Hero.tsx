@@ -1,10 +1,42 @@
+'use client';
+
 import { heroContent } from '@/lib/content';
+import { useEffect, useRef } from 'react';
 
 export default function Hero() {
+    const videoRef = useRef<HTMLVideoElement>(null);
+
+    useEffect(() => {
+        // Respect reduced motion preference
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion && videoRef.current) {
+            videoRef.current.pause();
+        }
+    }, []);
+
     return (
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-            {/* Background gradient effects */}
-            <div className="pointer-events-none absolute inset-0">
+            {/* Video Background */}
+            <div className="absolute inset-0 z-0">
+                <video
+                    ref={videoRef}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover"
+                    poster="/hero-poster.jpg"
+                >
+                    <source src="https://cdn.streamable.com/video/mp4/4syreq.mp4" type="video/mp4" />
+                </video>
+                {/* Dark overlay for text readability */}
+                <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0f]/70 via-[#0a0a0f]/50 to-[#0a0a0f]/90" />
+                {/* Vignette effect */}
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#0a0a0f_100%)] opacity-60" />
+            </div>
+
+            {/* Background gradient effects (on top of video) */}
+            <div className="pointer-events-none absolute inset-0 z-[1]">
                 <div className="absolute top-1/4 left-1/4 h-[500px] w-[500px] rounded-full bg-[#c4a47c]/[0.08] blur-[120px]" />
                 <div className="absolute bottom-1/4 right-1/4 h-[400px] w-[400px] rounded-full bg-[#e8c4c4]/[0.06] blur-[100px]" />
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-[#c4a47c]/[0.03] blur-[150px]" />
@@ -12,7 +44,7 @@ export default function Hero() {
 
             {/* Subtle grid pattern */}
             <div
-                className="pointer-events-none absolute inset-0 opacity-[0.02]"
+                className="pointer-events-none absolute inset-0 z-[1] opacity-[0.02]"
                 style={{
                     backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
                            linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
@@ -20,7 +52,7 @@ export default function Hero() {
                 }}
             />
 
-            <div className="relative mx-auto max-w-7xl px-6 py-24 text-center">
+            <div className="relative z-[2] mx-auto max-w-7xl px-6 py-24 text-center">
                 {/* Eyebrow */}
                 <p className="inline-flex items-center gap-2 rounded-full border border-[#c4a47c]/30 bg-[#c4a47c]/10 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.25em] text-[#c4a47c]">
                     <span className="h-1.5 w-1.5 rounded-full bg-[#c4a47c] animate-pulse" />
